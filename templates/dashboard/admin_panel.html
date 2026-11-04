@@ -1,2 +1,11 @@
 {% extends "base.html" %}
-{% block content %}<h2>Admin Panel</h2>{% endblock %}
+
+{% block content %}
+<div class="card border-0 shadow-sm">
+  <div class="card-body p-4">
+    <h2 class="h4 mb-1">Admin Panel</h2>
+    <p class="text-body-secondary small mb-4">Only administrators can see this page.</p>
+    <a href="{% url 'dashboard' %}" class="btn btn-outline-secondary btn-sm">Back to dashboard</a>
+  </div>
+</div>
+{% endblock %}

@@ -1,14 +1,40 @@
 {% extends "base.html" %}
 
 {% block content %}
-<h2>Welcome, {{ user.first_name|default:user.username }}!</h2>
-<ul>
-  <li>Role: {{ user.get_role_display }}</li>
-  <li>Course: {{ user.course|default:"Not set" }}</li>
-  <li>Members: {{ member_count }}</li>
-  <li>Last login: {{ user.last_login|date:"M d, Y" }}</li>
-</ul>
-{% if is_admin %}
-  <a href="{% url 'admin_panel' %}">Open admin panel</a>
-{% endif %}
+<h2 class="h3 mb-1">Welcome, {{ user.first_name|default:user.username }}!</h2>
+<p class="text-body-secondary small mb-4">Last login: {{ user.last_login|date:"M d, Y" }}</p>
+
+<div class="row g-3 mb-4">
+  <div class="col-sm-4">
+    <div class="card border-0 shadow-sm text-center h-100">
+      <div class="card-body py-4">
+        <div class="fs-4 fw-semibold">{{ user.get_role_display }}</div>
+        <div class="small text-body-secondary">Role</div>
+      </div>
+    </div>
+  </div>
+  <div class="col-sm-4">
+    <div class="card border-0 shadow-sm text-center h-100">
+      <div class="card-body py-4">
+        <div class="fs-4 fw-semibold">{{ user.course|default:"Not set" }}</div>
+        <div class="small text-body-secondary">Course</div>
+      </div>
+    </div>
+  </div>
+  <div class="col-sm-4">
+    <div class="card border-0 shadow-sm text-center h-100">
+      <div class="card-body py-4">
+        <div class="fs-4 fw-semibold">{{ member_count }}</div>
+        <div class="small text-body-secondary">Members</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="d-flex gap-2">
+  <a href="{% url 'profile' %}" class="btn btn-outline-primary">Edit profile</a>
+  {% if is_admin %}
+    <a href="{% url 'admin_panel' %}" class="btn btn-outline-secondary">Open admin panel</a>
+  {% endif %}
+</div>
 {% endblock %}
