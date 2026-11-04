@@ -131,3 +131,6 @@ MAILERS = {
 AUTH_USER_MODEL = 'accounts.CustomUser'
 LOGIN_REDIRECT_URL ='dashboard'
 LOGOUT_REDIRECT_URL = 'login'
+# Match Bootstrap's alert class names
+from django.contrib.messages import constants as message_constants
+MESSAGE_TAGS = {message_constants.ERROR: "danger"}
